@@ -62,7 +62,7 @@ namespace Resourceful
 
                     List<ItemData> searchResult = new List<ItemData>();
 
-                    getItemsInRadius(ply.transform.position, 200f, region, searchResult);
+                    getItemsInRadius(ply.transform.position, 500f, region, searchResult);
 
                     foreach (ItemData item in searchResult)
                     {
