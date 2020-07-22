@@ -1,0 +1,12 @@
+{
+	"IsEnabled": true,
+	"Name": "Resourceful Module",
+	"Version": "0.0.0",
+	"Assemblies":
+	[
+		{
+			"Path": "/Resourceful.dll",
+			"Role": "Server"
+		}
+	]
+}
