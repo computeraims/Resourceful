@@ -14,13 +14,10 @@ namespace Resourceful
         public void Awake()
         {
             Console.WriteLine("ResourcefulManager loaded");
-            autoPickupItems.Add(67); // Metal Scrap
-            autoPickupItems.Add(37); // Birch Log
-            autoPickupItems.Add(39); // Maple Log
-            autoPickupItems.Add(41); // Pine Log
-            autoPickupItems.Add(38); // Birch Stick
-            autoPickupItems.Add(40); // Maple Stick
-            autoPickupItems.Add(42); // Pine Stick
+            foreach (ushort itemID in Main.Config.items)
+            {
+                autoPickupItems.Add(itemID);
+            }
         }
 
         public static void getItemsInRadius(Vector3 center, float sqrRadius, List<RegionCoordinate> search, List<ItemData> result)

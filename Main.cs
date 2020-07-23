@@ -1,6 +1,8 @@
 ﻿using Resourceful.Utils;
 using SDG.Framework.Modules;
 using System;
+using System.IO;
+using System.Reflection;
 using UnityEngine;
 
 namespace Resourceful
@@ -10,6 +12,8 @@ namespace Resourceful
         private static GameObject ResourcefulObject;
 
         public static Main Instance;
+
+        public static Config Config;
 
         public void initialize()
         {
@@ -21,6 +25,12 @@ namespace Resourceful
 
             ResourcefulObject = new GameObject("Resourceful");
             DontDestroyOnLoad(ResourcefulObject);
+
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            ConfigHelper.EnsureConfig($"{path}{Path.DirectorySeparatorChar}config.json");
+
+            Config = ConfigHelper.ReadConfig($"{path}{Path.DirectorySeparatorChar}config.json");
 
             ResourcefulObject.AddComponent<ResourcefulManager>();
         }
