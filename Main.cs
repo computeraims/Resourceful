@@ -26,11 +26,13 @@ namespace Resourceful
             ResourcefulObject = new GameObject("Resourceful");
             DontDestroyOnLoad(ResourcefulObject);
 
-            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string callingPath = $"{Path.GetDirectoryName(Assembly.GetCallingAssembly().Location)}";
 
-            ConfigHelper.EnsureConfig($"{path}{Path.DirectorySeparatorChar}config.json");
+            DirectoryInfo configDirectory = Directory.CreateDirectory($"{callingPath}/config");
 
-            Config = ConfigHelper.ReadConfig($"{path}{Path.DirectorySeparatorChar}config.json");
+            ConfigHelper.EnsureConfig($"{callingPath}/config/resourceful.json");
+
+            Config = ConfigHelper.ReadConfig($"{callingPath}/config/resourceful.json");
 
             ResourcefulObject.AddComponent<ResourcefulManager>();
         }
